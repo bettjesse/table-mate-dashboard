@@ -1,6 +1,7 @@
-const plugin = require('tailwindcss/plugin');
+import plugin from 'tailwindcss/plugin';
+import forms from '@tailwindcss/forms';
 
-module.exports = {
+export default {
   content: [
     './index.html',
     './src/**/*.{js,jsx,ts,tsx}',
@@ -56,9 +57,7 @@ module.exports = {
     },
   },
   plugins: [
-    // eslint-disable-next-line global-require
-    require('@tailwindcss/forms'),
-    // add custom variant for expanding sidebar
+    forms,
     plugin(({ addVariant, e }) => {
       addVariant('sidebar-expanded', ({ modifySelectors, separator }) => {
         modifySelectors(({ className }) => `.sidebar-expanded .${e(`sidebar-expanded${separator}${className}`)}`);
